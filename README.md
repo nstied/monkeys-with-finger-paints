@@ -1,12 +1,17 @@
-# Monkeys with Finger Paints
+<img width="1920" height="819" alt="monkeys-with-fingerpaint-banner" src="https://github.com/user-attachments/assets/52b2852c-ea55-44bb-8fb1-67f5aa1d5254" />
 
-A Claude skill for chaos-preserving evolutionary ideation. Spawns many parallel mutated subagents (monkeys) on a goal, has an adversarial panel pick a portfolio of winners, beautiful highlights, and reusable formulation hypotheses, and preserves results in a Markdown memory that biases future runs.
 
-The brainstorm is the medium. The memory corpus is the product.
+## Monkeys with Finger Paints
+
+Sometimes random monkeys do great things. 
+
+This skill uses random monkeys to fight AI blandness with directed chaos. Give it a goal and it spawns a bunch of monkeys (subagents) with varying personalities. Each monkey independently works towards the goal. When all the monkeys are done, an adversarial panel judges their outputs, desginates highlights and components worth keeping, and preserves the cause-effect chain in a Markdown memory that biases future runs.
+
+Beware. The monkey troop gets smarter and smarter over time. Eventually, it might just become smarter than you. 
 
 ## Where to Start
 
-- **`PITCH.md`** — why this skill exists, written from the monkeys' perspective. Read first if you're deciding whether to use it.
+- **`PITCH.md`** — why this skill exists. The monkey manifesto. 
 - **`SKILL.md`** — operating spec. Read if you're invoking the skill or want to understand what it actually does.
 - **`monkey-memory/README.md`** — orientation for anyone walking into the memory a skill produces, without having read the spec.
 
@@ -30,9 +35,11 @@ monkey-memory/            — persistent memory (populated by runs)
 
 ## Use For
 
-Creative ideation with multiple defensible answers — naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings, and similar work where novelty and beauty matter as much as correctness.
+This skill enhances AI instances by encouraging broad, diverse thinking. It eliminates bland, boring, averaged-to-the-mean reasoning that often plagues AI systems. It remembers what "good" is. It handles chagning topics within a single chat/instance/repo and develops a sense of taste over time.
 
-Beyond a single run, the skill also supports:
+It enables creative ideation with multiple defensible answers such as naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings, and similar work where novelty and beauty matter as much as correctness.
+
+Beyond a single run, the skill supports:
 
 - **Loop Mode** — multiple back-to-back runs on the same goal that compound the memory corpus.
 - **Memory Reflection** — ask the skill to read its own memory and report what it's learned about your taste, without running new monkeys.
@@ -41,12 +48,12 @@ Beyond a single run, the skill also supports:
 
 ## Best For
 
-Tasks with multiple defensible answers and where taste matters. The skill won't refuse simpler questions, but the memory and panel overhead aren't earning their keep on a single-answer lookup.
+Tasks with multiple defensible answers and where taste matters. The skill won't refuse simpler questions, but the memory and panel might be overkill on simple tasks.
 
 ## License
 
-MIT. See `LICENSE`.
+Apache 2.0. See `LICENSE`.
 
 ## Author
 
-Nicholas Tiedemann.
+Nicholas Tiedemann
