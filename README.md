@@ -1,56 +1,56 @@
 <img width="1920" height="819" alt="monkeys-with-fingerpaint-banner" src="https://github.com/user-attachments/assets/52b2852c-ea55-44bb-8fb1-67f5aa1d5254" />
 
-# WELCOME TO MONKEY TOWN
+# 🐵🍌 MONKEYS WITH FINGER PAINTS 🍌🐵
 
-Sometimes random monkeys do great things.
+*Reckless on purpose. Sharper over time.*
 
-This skill uses random monkeys to fight AI blandness with directed chaos. Give it a goal and it spawns a bunch of monkeys (subagents) with varying personalities. Each monkey independently works toward the goal. When all the monkeys are done, an adversarial panel judges their outputs, designates highlights and components worth keeping, and preserves the cause-effect chain in a Markdown memory that biases future runs.
+AI is bland by default. Trained on the average, it produces the average. Ten flavors of one idea, no matter how you prompt. Other tools work around this with templates, chains, and clever framings. They don't fix it.
 
-Beware. The monkey troop gets smarter and smarter over time. Eventually, it might just become smarter than you.
+Monkeys with Finger Paints fixes it permanently. It works on any problem: naming, strategy, debugging, refactoring, framing, copy, hiring, even how to phrase a hard email. Every problem benefits from extremely creative divergent thinking. The skill surfaces angles nothing else does.
 
-The brainstorm is the medium. The memory corpus is the product.
+Picture a troop of monkeys with finger paint. Each one gets the same goal, a different temperament, a different jar of paint, and different constraints. Most produce garbage. That is the design. Being absurd, deviating from the mean, experimenting wildly is how you find the answer single-model brainstorming could never reach.
+
+A panel walks in afterward, throws away the failures, keeps the surprises, and writes down the chain of custody: which monkey produced what, which paint led to which result, and which results you kept. Every idea traced back to the inputs that made it.
+
+The next batch of monkeys reads those notes. The batch after that has more notes still. Run after run, a knowledge base of how to produce good results accumulates. It handles multiple topics simultaneously. Each problem domain builds its own thread, and cross-domain patterns of your taste emerge. The troop gets sharper every time you run it.
+
+Loop it overnight while you sleep. Ask the memory what it has learned about your taste; it will tell you. The blandness does not come back. 🐵🍌
 
 ## MEET THE TROOP
 
-- **`PITCH.md`** — why this skill exists. The monkey manifesto.
-- **`SKILL.md`** — operating spec. Read if you're invoking the skill or want to understand what it actually does.
-- **`monkey-memory/README.md`** — orientation for anyone walking into the memory a skill produces, without having read the spec.
+- **`PITCH.md`**: why this skill exists. The monkey manifesto.
+- **`SKILL.md`**: the operating spec. Read this to invoke the skill or understand the mechanism.
+- **`monkey-memory/README.md`**: a primer for anyone landing in a skill's memory output without context.
 
 ## THE LAYOUT
 
 ```
-SKILL.md           — runtime procedure and principles
-PITCH.md           — why-this-exists pitch
-LICENSE            — Apache 2.0
-NOTICE             — attribution requirement (preserve in derivatives)
-references/        — deep-dive content the skill loads on demand
-  formulations.md  — dimensions, seed library, voice anchors, fresh chaos
-  panel.md         — judges, judging procedure, prompt templates
-  persistence.md   — memory model, source-of-truth, templates, retrieval, consolidation
-  execution.md     — execution modes, runtime adapters, spawn rules, simulated-mode constraints
-  response-style.md — canonical run-output template, voice, panel reporting, meme beats, monkey display names
-  loop-mode.md     — loop invocation, cost gating, convergence detection and response, wrapper file
-  quality.md       — lifecycle, entropy, causality, verification, beauty, chaos, lineage, failures
-templates/         — file templates the skill uses (run, formulation, lineage, panel decision)
-monkey-memory/     — persistent memory (populated by runs, gitignored)
+SKILL.md            # runtime procedure and principles
+PITCH.md            # why-this-exists pitch
+LICENSE             # Apache 2.0
+NOTICE              # attribution requirement (preserve in derivatives)
+references/         # deep-dive content the skill loads on demand
+  formulations.md   # dimensions, seed library, voice anchors, fresh chaos
+  panel.md          # judges, judging procedure, prompt templates
+  persistence.md    # memory model, source-of-truth, templates, retrieval, consolidation
+  execution.md      # execution modes, runtime adapters, spawn rules, simulated-mode constraints
+  response-style.md # canonical run-output template, voice, panel reporting, meme beats, monkey display names
+  loop-mode.md      # loop invocation, cost gating, convergence detection and response, wrapper file
+  quality.md        # lifecycle, entropy, causality, verification, beauty, chaos, lineage, failures
+templates/          # file templates the skill uses (run, formulation, lineage, panel decision)
+monkey-memory/      # persistent memory (populated by runs, gitignored)
 ```
 
 ## WHEN TO RELEASE THE MONKEYS
 
-This skill enhances AI instances by encouraging broad, diverse thinking. It eliminates bland, boring, averaged-to-the-mean reasoning that often plagues AI systems. It remembers what "good" is. It handles changing topics within a single chat / instance / repo and develops a sense of taste over time.
+Strong fit for tasks with multiple defensible answers where taste matters: naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings. The skill won't refuse simpler questions, but the memory and panel might be overkill on a single-answer lookup.
 
-Strong fit for creative ideation with multiple defensible answers — naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings, and similar work where novelty and beauty matter as much as correctness.
+Modes you can invoke by name:
 
-Beyond a single run, the skill supports:
-
-- **Loop Mode** — multiple back-to-back runs on the same goal that compound the memory corpus.
-- **Memory Reflection** — ask the skill to read its own memory and report what it's learned about your taste, without running new monkeys.
-- **User Judge Mode** — say *"I'll judge"* and the panel still scores but you pick the winners, with explicit criteria and the troop's full output surfaced.
-- **Sketch / Gallery / Deep Troop** — scale from 4 monkeys (fast) to 48 (deep) by saying the mode name.
-
-## WHEN BANANAS ARE EARNED
-
-Tasks with multiple defensible answers where taste matters. The skill won't refuse simpler questions, but the memory and panel might be overkill on a single-answer lookup.
+- **Loop Mode:** multiple back-to-back runs on the same goal that compound the memory corpus.
+- **Memory Reflection:** ask the skill to read its own memory and report what it's learned about your taste, without running new monkeys.
+- **User Judge Mode:** say *"I'll judge"* and the panel still scores but you pick the winners, with explicit criteria and the troop's full output surfaced.
+- **Sketch / Gallery / Deep Troop:** scale from 4 monkeys (fast) to 48 (deep) by saying the mode name.
 
 ## A GLIMPSE
 
@@ -72,13 +72,13 @@ What a run feels like, abbreviated:
 >
 > *✨ THE PANEL HAS SPOKEN*
 >
-> *The Curator went hard for Rita — kept calling it "the only real painting." The Skeptic torched Bonzo for the third-clause sentence. Operator was bored. Panel landed on Rita.*
+> *The Curator went hard for Rita, kept calling it "the only real painting." The Skeptic torched Bonzo for the third-clause sentence. Operator was bored. Panel landed on Rita.*
 >
 > *[the full output: What the monkeys made, What the panel said, The portfolio, Next moves, Memory updates]*
 >
 > *🐵🐵🐵🐵🐵🐵🐵🐵 SHOW'S OVER 🐵🐵🐵🐵🐵🐵🐵🐵*
 
-(The monkey emojis flanking each title equal the troop size on each side — eight for Standard mode, four for Sketch, sixteen-plus for Gallery. You can see the scale of the run at a glance.)
+(Monkey emojis flanking each title equal the troop size on each side: eight for Standard mode, four for Sketch, sixteen-plus for Gallery.)
 
 ## THE FINE PRINT
 
