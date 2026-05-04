@@ -8,7 +8,7 @@
 monkey-memory/
 
 # Zip build artifacts (left over from packaging the .skill bundle)
-zi*
+*.zip
 
 # Backup files
 *.skill.bak
