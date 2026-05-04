@@ -10,9 +10,11 @@ Monkeys with Finger Paints fixes it permanently. It works on any problem: naming
 
 Picture a troop of monkeys with finger paint. Each one gets the same goal, a different temperament, a different jar of paint, and different constraints. Most produce garbage. That is the design. Being absurd, deviating from the mean, experimenting wildly is how you find the answer single-model brainstorming could never reach.
 
-A panel walks in afterward, throws away the failures, keeps the surprises, and writes down the chain of custody: which monkey produced what, which paint led to which result, and which results you kept. Every idea traced back to the inputs that made it.
+A panel walks in afterward, throws away the failures, keeps the surprises, and writes down the chain of custody: which monkey produced what, which paint led to which result, and which results you kept. Stick around and offer feedback, or opt to allow the loop to run autonomously.
 
-The next batch of monkeys reads those notes. The batch after that has more notes still. Run after run, a knowledge base of how to produce good results accumulates. It handles multiple topics simultaneously. Each problem domain builds its own thread, and cross-domain patterns of your taste emerge. The troop gets sharper every time you run it.
+Either way, each idea is traced back to the inputs that made it, building a knowledge base of how to reproduce "good."
+
+The next batch of monkeys reads those notes. The batch after that has more notes still. The memory handles multiple topics simultaneously. Each problem domain builds its own thread, and cross-domain patterns of your taste emerge. The troop gets sharper every time you run it.
 
 Loop it overnight while you sleep. Ask the memory what it has learned about your taste; it will tell you. The blandness does not come back. 🐵🍌
 
