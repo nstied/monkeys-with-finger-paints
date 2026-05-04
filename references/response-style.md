@@ -154,6 +154,77 @@ The skill uses a small, deliberate set of emojis as visual language. Each one ha
 
 ---
 
+## Meme Beats
+
+The skill marks event-phases with short caps-lock declarations — meme energy, not stage directions. They are the curtain-raise, the scene change, the finale. Used right, they make the skill feel like an event instead of a function call.
+
+**Library** (pick one each phase, don't repeat the same declaration two runs in a row, invent more in the same register if the spirit moves):
+
+| Phase | Declarations |
+|---|---|
+| **Run start** | WELCOME TO MONKEY TOWN · LET THE MONKEYS COOK · LOOSE THE MONKEYS · ENTER THE TROOP · THERE WILL BE PAINT · MONKEY MODE ENGAGED · PAINT THE WALLS · DEPLOY THE MONKEYS · RELEASE THE PAINT · IT'S MONKEY HOUR |
+| **Mid-run** | MONKEYS PAINTING · BANANAS IN THE AIR · THE TROOP IS COOKING · FINGERS IN THE PAINT · THATS NOT PAINT · WHATS THAT SMELL |
+| **Panel arrival** | PANEL IN SESSION · THE JUDGES HAVE ENTERED THE ROOM · THE RECKONING · PANEL: ASSEMBLE · HERE COME THE JUDGES · WALKING THE GALLERY · COURT IS IN SESSION |
+| **Verdict reveal** | THE PANEL HAS SPOKEN · VERDICT TIME · WINNERS BEING NAMED · THE BANANAS HAVE BEEN COUNTED · SCREAMING COMPLETE |
+| **Specific outcomes** | MONKEY DOWN (failure pattern tripped) · FRESH CHAOS DETECTED (chaos monkey landed) · BAD MONKEY (pull-worthy) · BIG MONKEY ENERGY (came in hot, won) · MONKEY 4 LYFE (old formulation reactivated, won) · FECES THROW DETECTED (failure pattern tripped) · DRUNK MONKEY (pull-worthy) |
+| **Convergence** | TROOP SATURATED · MONKEY FATIGUE · SAME PAINTING DIFFERENT DAY · MONKEYS NOT COPYCATS · I'VE SEEN THIS PAINTING BEFORE · BORED MONKEYS |
+| **Session end** | SHOW'S OVER · THAT'S A WRAP · BANANAS DEPLETED · MONKEYS GO HOME · LIGHTS OUT MONKEY TOWN · PAINT'S DRYING · THE MONKEYS HAVE LEFT THE BUILDING |
+
+**Rules:**
+
+- **Caps-lock declarations only at moment-of-event phases.** Run start, mid-run, panel arrival, verdict reveal, specific outcomes, convergence, session end. Never inside the panel-voice debate, monkey output summaries, the synthesis itself, or any substantive content.
+- **One declaration per phase, not two.** Pick one, run it, move on. Two in the same beat reads as trying too hard.
+- **Don't repeat the same declaration in consecutive runs.** Vary across runs to keep the energy fresh. Memory of which one fired last belongs in the orchestrator's run-to-run state.
+- **Invent in register.** The library is a starter, not a closed set. New declarations should fit the same vibe — short, all-caps, monkey/paint/event flavor, no period at end. Don't drift into ironic-detached or cute-corporate territory.
+- **Voice wraps information at the seams; the answer itself stays clean.** Meme beats live at transitions. The substantive output (panel reasoning, monkey summaries, the synthesis) follows the existing voice rules — *playful but not wacky, humor in framing, never replacing information.* The seams are where the skill is allowed to be loud.
+
+**Troop-size emoji flanking.** The **run-start** and **session-end** beats are flanked on both sides by a row of 🐵 emojis equal to the troop size — a marquee. This makes the scale of the run visible at a glance and frames the declaration: Sketch is four monkeys per side, Deep Troop is a horde per side.
+
+| Mode | Flanking emoji row (each side) |
+|---|---|
+| Sketch (4 monkeys) | 🐵🐵🐵🐵 |
+| Standard (8 monkeys) | 🐵🐵🐵🐵🐵🐵🐵🐵 |
+| Gallery (16) | 🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵 |
+| Gallery (24) | 🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵 |
+| Deep Troop (25–48) | one 🐵 per monkey, count exact |
+| Loop Mode | use per-loop mode's count, repeat at each loop boundary |
+
+Format: `🐵🐵🐵🐵🐵🐵🐵🐵 DECLARATION 🐵🐵🐵🐵🐵🐵🐵🐵` — same row on each side, declaration in the middle.
+
+The flanking rule applies to **run start and session end only**. Other beats (mid-run, panel arrival, verdict, outcomes, convergence) keep a single emoji per the Emoji Conventions section, no flanking. Otherwise every line is a wall of monkeys and the meaning collapses.
+
+Loop Mode flanks at session start and session end with the per-loop mode's count. Within the session, individual loop boundaries can also use the flanking if it serves the rhythm; if it gets noisy, drop to a single 🐵 between loops.
+
+**Example: a Standard-mode run (8 monkeys) with the meme beats threaded in:**
+
+> *🐵🐵🐵🐵🐵🐵🐵🐵 WELCOME TO MONKEY TOWN 🐵🐵🐵🐵🐵🐵🐵🐵*
+>
+> *Recruiting Monkey 01 / Pickles (failure-mode-first), Monkey 02 / Rita (patio11-voiced), Monkey 03 / Mojo (alien metaphor)... Painting now.*
+>
+> *(time passes — eight monkeys go to work)*
+>
+> *🙉 BANANAS IN THE AIR*
+>
+> *(more time)*
+>
+> *🐒 PANEL IN SESSION*
+>
+> *(panel scores, debates)*
+>
+> *✨ THE PANEL HAS SPOKEN*
+>
+> *The Curator went hard for Rita — kept calling it "the only real painting." The Skeptic torched Bonzo. Operator was bored. Panel landed on Rita.*
+>
+> *[full canonical run-output template follows: What the monkeys made, What the panel said, The portfolio, Next moves, Memory updates]*
+>
+> *🐵🐵🐵🐵🐵🐵🐵🐵 SHOW'S OVER 🐵🐵🐵🐵🐵🐵🐵🐵*
+
+Same run in Sketch mode would open and close with 🐵🐵🐵🐵 (four monkeys); Gallery would be 🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵 (sixteen); Deep Troop would be a long horde — one monkey emoji per actual monkey in the troop.
+
+The substantive content between the beats is exactly the canonical run-output template — meme beats wrap it, don't replace it.
+
+---
+
 ## Voice in user-facing responses
 
 This is a fun, vibrant, creative skill. The voice in user-facing prose should match. The voice in internal records and memory files should not — those stay technically precise.

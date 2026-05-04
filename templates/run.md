@@ -15,7 +15,7 @@ execution_mode: native_parallel_subagents
 runtime_adapter: other
 formulation_schema_version: 2
 coverage_status: not_applicable
-produced_under_skill_version: 0.4.5
+produced_under_skill_version: 0.5.2
 memory_used: true
 # loop_session and loop_position: include both when this run is part of a Loop Mode session, omit both otherwise.
 # loop_session: loop_<adjective>_<primate>      # e.g. loop_silent_capuchin

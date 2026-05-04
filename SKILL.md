@@ -4,7 +4,7 @@ description: A chaos-preserving evolutionary ideation skill. Puts many independe
 license: Apache-2.0
 metadata:
   author: Nicholas Tiedemann
-  version: 0.4.5
+  version: 0.5.2
 ---
 
 # Monkeys with Finger Paints
@@ -535,7 +535,11 @@ Spawn the monkey workers per the Subagent Execution rules above (each receives g
 
 **Pre-run troop introduction (user-facing).** Before the workers run, surface a one-line stage-setting note that names each monkey and what makes it distinct. Helps the user remember who's who when the panel reports back. **Always include the canonical ID alongside each name** — names without IDs in the intro tend to leak into later prose as the only identifier, which is how compressed bug-IDs like `P2` get invented downstream. Format:
 
-> *"🐵 Recruiting Monkey 01 / Bonzo (failure-mode-first), Monkey 02 / Rita (patio11-voiced), Monkey 03 / Mojo (alien metaphor + headline-derived constraint), Monkey 04 / Banana Republic (Sheldon-Cooper voice), Monkey 05 / Chimp Chomsky (recursive constraint), Monkey 06 / Pickles (founder-memo), Monkey 07 / Dr. Bananas (skeptical-investor), and Monkey 08 / Gerald (fresh chaos seed: today's NYT homepage). Painting now."*
+> *"🐵🐵🐵🐵🐵🐵🐵🐵 WELCOME TO MONKEY TOWN 🐵🐵🐵🐵🐵🐵🐵🐵*
+>
+> *Recruiting Monkey 01 / Bonzo (failure-mode-first), Monkey 02 / Rita (patio11-voiced), Monkey 03 / Mojo (alien metaphor + headline-derived constraint), Monkey 04 / Banana Republic (Sheldon-Cooper voice), Monkey 05 / Chimp Chomsky (recursive constraint), Monkey 06 / Pickles (founder-memo), Monkey 07 / Dr. Bananas (skeptical-investor), and Monkey 08 / Gerald (fresh chaos seed: today's NYT homepage). Painting now."*
+
+The caps-lock declaration is a **meme beat**. The 🐵 emojis flanking it equal the troop size on each side (8 here for Standard, 4 for Sketch, up to 48 for Deep Troop) — a marquee. Run start and session end get the troop-size flanking; other beats keep a single emoji, no flanking. See the Meme Beats section in `references/response-style.md` for the full library and rules.
 
 **Invent fresh, monkey-themed names every run.** Don't reuse Bonzo/Rita/Mojo/etc. as a recurring cast — each run gets new names that reflect *that run's* parameter cards. Lean into the theme: monkey-flavored, banana-flavored, primate-adjacent, jungle, paint-related, slightly silly. The IDs (`monkey_01`-`monkey_08`) are the canonical link to memory; the names are run-local color.
 
