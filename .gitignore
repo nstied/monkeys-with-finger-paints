@@ -1,0 +1,16 @@
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# This skill's runtime memory — per-project user data, not part of the skill source.
+# When the skill runs in any project, it writes runtime memory to monkey-memory/.
+# That data belongs to the project, not in version control.
+monkey-memory/
+
+# Zip build artifacts (left over from packaging the .skill bundle)
+zi*
+
+# Backup files
+*.skill.bak
+*.bak
+*~
