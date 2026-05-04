@@ -15,7 +15,7 @@ execution_mode: native_parallel_subagents
 runtime_adapter: other
 formulation_schema_version: 2
 coverage_status: not_applicable
-produced_under_skill_version: 0.5.2
+produced_under_skill_version: 0.5.8
 memory_used: true
 # loop_session and loop_position: include both when this run is part of a Loop Mode session, omit both otherwise.
 # loop_session: loop_<adjective>_<primate>      # e.g. loop_silent_capuchin
@@ -34,7 +34,7 @@ Section legend:
 -->
 
 ## Agent-Readable Summary
-<!-- REQUIRED. Quick scan for future agents. Keep tight; one short paragraph or a few labeled lines. -->
+<!-- REQUIRED. Quick scan for future agents. One short paragraph or a few labeled lines. -->
 
 Goal:
 
@@ -81,7 +81,7 @@ canonical-ID format applies here too.
 - **Failure with Signal:**
 
 ## Monkey Parameter Cards
-<!-- REQUIRED. Compact YAML for every monkey in the troop. Critical for cross-run formulation traceability and memory consolidation. -->
+<!-- REQUIRED. Single-block YAML for every monkey in the troop. Critical for cross-run formulation traceability and memory consolidation. -->
 
 ```yaml
 monkey_01:

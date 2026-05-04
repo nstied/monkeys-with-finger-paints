@@ -59,7 +59,7 @@ The verdict shape pairs with Step 8's Adaptive Closing Modes — clean close →
 ### Rules for the template
 
 - **Synthesis at the top, always.** No "I'll start by explaining the troop" preamble. The headline answer is the first thing the reader sees.
-- **Don't skip sections to be brief.** If you have less to say in a section, write less *inside* it; don't drop it. Empty "What the monkeys made" or "What the panel said" sections mean the run failed.
+- **Don't skip sections in service of brevity.** If you have less to say in a section, write less *inside* it; don't drop it. Empty "What the monkeys made" or "What the panel said" sections mean the run failed.
 - **Don't add sections that aren't in the template.** If you have something extra to say (lineage callback, surprise convergence note, user-preference observation), weave it into the appropriate existing section. Adding bespoke H2s breaks the skeleton.
 - **Don't paste the winning monkey output unless that *is* the best synthesis.** The synthesis is usually a recombined-from-the-portfolio answer, not a copy.
 - **Promotion to global indexes is bookkeeping, not a "next move."** Everything from the run is already preserved in the run file by Step 10. Don't invite the user to "preserve" anything — it's already preserved.
@@ -127,7 +127,7 @@ The panel didn't pick a Best Overall — that's your call. Choose any subset of 
 - **Always include the explicit criteria list** (goal-fit / beauty / usefulness / surprise). Even repeat users forget what they're picking against. Cheap to include, high value.
 - **Always include the "How to respond" options.** Without them, the user has to guess what input shape the orchestrator expects.
 - **Do not declare a winner** before the user responds. Lead with the prompt for their call.
-- **Panel scores are reference, not verdict.** Show them so the user knows what the room thought, but frame the user's call as primary.
+- **Panel scores are reference, not verdict.** Show them so the user knows what the panel thought, but frame the user's call as primary.
 - After the user responds, persist their choices as the canonical Panel Decision in the run file (panel scores stay in the Score Matrix; user picks become the portfolio). Increment the override counter in `monkey-memory/preferences.md` if the user picked anything that wasn't the panel's top choice.
 
 ---
@@ -164,7 +164,7 @@ The skill marks event-phases with short caps-lock declarations — meme energy, 
 |---|---|
 | **Run start** | WELCOME TO MONKEY TOWN · LET THE MONKEYS COOK · LOOSE THE MONKEYS · ENTER THE TROOP · THERE WILL BE PAINT · MONKEY MODE ENGAGED · PAINT THE WALLS · DEPLOY THE MONKEYS · RELEASE THE PAINT · IT'S MONKEY HOUR |
 | **Mid-run** | MONKEYS PAINTING · BANANAS IN THE AIR · THE TROOP IS COOKING · FINGERS IN THE PAINT · THATS NOT PAINT · WHATS THAT SMELL |
-| **Panel arrival** | PANEL IN SESSION · THE JUDGES HAVE ENTERED THE ROOM · THE RECKONING · PANEL: ASSEMBLE · HERE COME THE JUDGES · WALKING THE GALLERY · COURT IS IN SESSION |
+| **Panel arrival** | PANEL IN SESSION · THE JUDGES HAVE ARRIVED · THE RECKONING · PANEL: ASSEMBLE · HERE COME THE JUDGES · WALKING THE GALLERY · COURT IS IN SESSION |
 | **Verdict reveal** | THE PANEL HAS SPOKEN · VERDICT TIME · WINNERS BEING NAMED · THE BANANAS HAVE BEEN COUNTED · SCREAMING COMPLETE |
 | **Specific outcomes** | MONKEY DOWN (failure pattern tripped) · FRESH CHAOS DETECTED (chaos monkey landed) · BAD MONKEY (pull-worthy) · BIG MONKEY ENERGY (came in hot, won) · MONKEY 4 LYFE (old formulation reactivated, won) · FECES THROW DETECTED (failure pattern tripped) · DRUNK MONKEY (pull-worthy) |
 | **Convergence** | TROOP SATURATED · MONKEY FATIGUE · SAME PAINTING DIFFERENT DAY · MONKEYS NOT COPYCATS · I'VE SEEN THIS PAINTING BEFORE · BORED MONKEYS |
@@ -193,7 +193,7 @@ Format: `🐵🐵🐵🐵🐵🐵🐵🐵 DECLARATION 🐵🐵🐵🐵🐵🐵�
 
 The flanking rule applies to **run start and session end only**. Other beats (mid-run, panel arrival, verdict, outcomes, convergence) keep a single emoji per the Emoji Conventions section, no flanking. Otherwise every line is a wall of monkeys and the meaning collapses.
 
-Loop Mode flanks at session start and session end with the per-loop mode's count. Within the session, individual loop boundaries can also use the flanking if it serves the rhythm; if it gets noisy, drop to a single 🐵 between loops.
+Loop Mode flanks at session start and session end with the per-loop mode's count. Within a Loop Mode session, individual loop boundaries use a single 🐵 (not the full marquee) — only the session start and session end get the troop-size marquee. Multiple full marquees in one session is too much.
 
 **Example: a Standard-mode run (8 monkeys) with the meme beats threaded in:**
 
@@ -248,6 +248,18 @@ What it should not look like:
 
 **Voice wraps information; it never replaces it.** If a sentence has to choose between flavor and clarity, choose clarity. The reader should walk away knowing what won, why, and what to do next — *and* be entertained on the way through. If they only know they were entertained, the run failed.
 
+### Register: collective nouns
+
+When the prose needs to refer to the cohort of monkeys, the accumulated knowledge, or the per-project corpus, use these plain alternatives:
+
+- *"the troop"* — for the cohort of monkeys (e.g., *"the troop is saturated"*, *"the troop's tired"*)
+- *"the memory"* — for the accumulated knowledge (e.g., *"the memory is convinced you reach for blunt voices"*, *"the memory has learned X"*)
+- *"this project"* — for the per-project corpus and its state (e.g., *"you've got 9 runs in this project"*)
+- *"the panel"* — for the judging cohort specifically (e.g., *"the panel landed on Rita"*)
+- Or describe directly without a collective noun (e.g., *"three runs in a row produced the same painting"*)
+
+Match the collective noun to what's actually being talked about. Don't conflate "memory" (the accumulated record) with "troop" (the active cohort) — they're different things. State reports get the most direct language; synthesis prose can lean on "memory" where the cumulative-knowledge framing is doing real work.
+
 ## Panel Voice in Reporting
 
 When reporting the panel decision, give the judges small voices instead of neutral attribution. The judges have taste — let it show.
@@ -268,7 +280,7 @@ Examples:
 
 - `ai_speak_giveaway` → *"tripped the AI-speak alarm — too many em-dashes, the Skeptic could smell the LLM."*
 - `polished_consultant_convergence` → *"hit the consultant-gloss alarm — clean, plausible, generic, said nothing."*
-- `cleverness_over_clarity` → *"got too clever for the room — would make the on-call engineer cry at 2am."*
+- `cleverness_over_clarity` → *"got too clever for the troop — would make the on-call engineer cry at 2am."*
 - `wrapper_class_compulsion` → *"wrapped a thing that didn't need wrapping."*
 - `unverified_saturation` → *"called something 'over-covered' without checking — that's a guess, not a fact."*
 
@@ -284,7 +296,7 @@ Format examples:
 >
 > *"Rita's voice anchor (patio11) won on copywriting in run_brave_gibbon. First time it's been tried on architecture; it survived the Skeptic but only barely."*
 
-The callback's job is to make the memory visible to the user — to demonstrate that the room is getting smarter. Skip it when memory has nothing relevant; don't manufacture connections.
+The callback's job is to make the memory visible to the user — to demonstrate that the memory is getting smarter. Skip it when memory has nothing relevant; don't manufacture connections.
 
 ## Structure of user-facing responses
 
@@ -301,6 +313,8 @@ Give each monkey a **display name** generated at synthesis time, drawn from the 
 **Canonical ID format — strict.** The canonical monkey identifier is `monkey_NN` where NN is a two-digit, zero-padded, sequential number starting at 01. The first monkey is `monkey_01`, the second is `monkey_02`, the eighth is `monkey_08`, the tenth is `monkey_10`. **Do not invent alternative IDs.** No letter prefixes (`P2`, `B3`, `S7`), no first-letter-of-display-name compressions, no run-scoped abbreviations. If you find yourself producing anything other than `monkey_NN` for a canonical reference, stop and use the sequential format.
 
 **Multi-pitch case.** When a monkey produces multiple candidate outputs in one run (e.g., two episode topics from the same parameter card), each candidate gets the canonical form `monkey_NN_pitch_M` where M is also two-digit zero-padded. So monkey 01's two candidates are `monkey_01_pitch_01` and `monkey_01_pitch_02`. **The same no-compression rule applies:** never `m1p1`, `m01p1`, `01.1`, or any other shorthand. If a Score Matrix or panel decision references a specific pitch, use the full `monkey_NN_pitch_M` form. If the prose just says "Pickles's first pitch" or "monkey_01's second take," that's fine — but the structured/canonical reference must be the full form.
+
+Multi-digit pitch numbers (`monkey_01_pitch_10`, `monkey_01_pitch_11`) are technically acceptable but rare. If a single monkey is producing 10 or more candidate outputs in one run, that's usually a signal the monkey's parameter card is too broad — split into two monkeys with sharper, more distinct cards instead. The 10+-pitch case is a smell, not a feature.
 
 In user-facing prose, the human-friendly form is `Monkey NN / **Display Name**` — both pieces, always. The number anchors the reader; the name carries character. Dropping the number in favor of a letter+number compression is a bug, not a stylistic choice.
 

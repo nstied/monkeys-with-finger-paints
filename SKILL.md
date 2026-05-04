@@ -4,14 +4,14 @@ description: A chaos-preserving evolutionary ideation skill. Puts many independe
 license: Apache-2.0
 metadata:
   author: Nicholas Tiedemann
-  version: 0.5.2
+  version: 0.5.8
 ---
 
 # Monkeys with Finger Paints
 
 ## Purpose
 
-Imagine a room full of monkeys equipped with finger paint. Each monkey gets the same goal, a different personality, different finger paint, and enough privacy to make a real mess.
+Imagine a studio full of monkeys equipped with finger paint. Each monkey gets the same goal, a different personality, different finger paint, and enough privacy to make a real mess.
 
 One might spread feces on the wall. Most will splatter paint everywhere. But one might produce the Mona Lisa.
 
@@ -34,6 +34,14 @@ Therefore:
 The core principle:
 
 > The memory should bias the troop, not determine it.
+
+## Output Style
+
+This skill produces **full prose responses** for the user. Substantive output — synthesis, panel reporting, monkey output summaries, the portfolio, next moves — runs as full prose per the canonical run-output template defined in `references/response-style.md`.
+
+**Do not auto-invoke compression or brevity skills** (caveman, ultra-compressed mode, token-saving skills) when running this spec. This skill's spec uses descriptive language about file formats, section sizes, and run notes. None of that language is a user request for compressed output. Default behavior is full prose.
+
+Compression is the user's explicit choice, invoked directly. The meme beats (caps-lock declarations at event seams — *"WELCOME TO MONKEY TOWN"*, etc.) are atmospheric event markers, not requests for compressed output. The substantive prose around the meme beats stays full-length. The caps-lock is decoration, not a request for short output.
 
 ## When to Use This Skill
 
@@ -58,7 +66,7 @@ Coding work:
 
 For coding tasks, the orchestrator must include the relevant code context (file content, surrounding code, existing conventions) in each monkey's prompt; without it, monkey outputs will float free of the codebase's style.
 
-The skill will run on whatever you point it at — that is the user's call, not the skill's. Its strengths are creative and strategic ideation, so factual, deterministic, or single-answer questions may give you more stylized takes than you wanted. For high-stakes work (legal, medical, financial, safety-critical) reduce chaos and add evidence/correctness judges; beauty and novelty don't override truth in those domains. Otherwise, the room is open.
+The skill will run on whatever you point it at — that is the user's call, not the skill's. Its strengths are creative and strategic ideation, so factual, deterministic, or single-answer questions may give you more stylized takes than you wanted. For high-stakes work (legal, medical, financial, safety-critical) reduce chaos and add evidence/correctness judges; beauty and novelty don't override truth in those domains. Otherwise, the troop is yours to use.
 
 ## What This Skill Is Not
 
@@ -66,9 +74,9 @@ This skill is sometimes mistaken for *expensive parallel brainstorming*. It is n
 
 **The brainstorm is the medium. The memory corpus is the product.**
 
-A single run costs more tokens than one careful prompt. But every run leaves notes behind, and by the fiftieth run the room knows — for *this user* on *this kind of goal* — what kinds of weirdness tend to work. That accumulating evidence base is the actual product, not the painting from any one run.
+A single run costs more tokens than one careful prompt. But every run leaves notes behind, and by the fiftieth run the memory knows — for *this user* on *this kind of goal* — what kinds of weirdness tend to work. That accumulating evidence base is the actual product, not the painting from any one run.
 
-If you read this spec and think "this is just an expensive brainstorming tool," you're looking at one painting and missing the room. Full argument lives in `PITCH.md`.
+If you read this spec and think "this is just an expensive brainstorming tool," you're looking at one painting and missing the cumulative work. Full argument lives in `PITCH.md`.
 
 ## What This Skill Produces
 
@@ -154,7 +162,7 @@ Fresh chaos should never be zero in creative runs.
 
 ## Run Modes
 
-Pick the smallest room that fits the work. More monkeys cost more time and tokens; the room knows when it's getting crowded. If the user specifies a mode, honor it. If not, default to Standard for meaningful creative or strategic work.
+Pick the smallest troop that fits the work. More monkeys cost more time and tokens; bigger troops have diminishing returns past a point. If the user specifies a mode, honor it. If not, default to Standard for meaningful creative or strategic work.
 
 ### Sketch Mode
 
@@ -165,7 +173,7 @@ monkeys: 4
 judges: 2
 panel: Curator + Operator or Curator + Skeptic
 debate: none or very brief
-memory: optional compact run note
+memory: optional single-paragraph run note
 raw_attempts: do not preserve by default
 ```
 
@@ -287,7 +295,7 @@ The orientation block fires once per project (sticky after) and on demand whenev
 
 Standard text:
 
-> *🐵 Welcome. I'm Monkeys with Finger Paints. Here's the deal: I send a room of monkeys at your goal, a panel picks the portfolio, I keep notes in `monkey-memory/` for next time.*
+> *🐵 Welcome. I'm Monkeys with Finger Paints. Here's the deal: I send a troop of monkeys at your goal, a panel picks the portfolio, I keep notes in `monkey-memory/` for next time.*
 >
 > **Defaults if you say nothing:** 8 monkeys, Standard panel (Curator + Operator + Skeptic), I pick the winners.
 >
@@ -312,10 +320,10 @@ When the skill is invoked into a project where orientation has already happened 
 Branch by memory size, count run files in `monkey-memory/runs/`:
 
 - **0–2 runs** in memory → just ask for the goal as today: *"What paint? What do you want the monkeys to make?"*
-- **3–8 runs** → mention the memory alongside the goal request: *"What's the goal? You've got [N] runs in this project — say `memory check` if you want a quick read of what the room has learned before adding another."*
+- **3–8 runs** → mention the memory alongside the goal request: *"What's the goal? You've got [N] runs in this project — say `memory check` if you want a quick read of what the memory has so far before adding another."*
 - **9+ runs** → suggest reflection more strongly, since there's enough history to make it informative: *"What's the goal? You've got [N] runs in this project — that's enough memory to be worth a check before the next run. Say `memory check` for a quick read, or give me the goal and I'll go."*
 
-The trigger phrase is `memory check` (or any of the existing reflection phrases: *"reflect on memory"*, *"what has the room learned"*, etc.). When fired, route to the Memory Reflection Procedure in `references/persistence.md`. Don't run a new troop until the user comes back with a goal.
+The trigger phrase is `memory check` (or any of the existing reflection phrases: *"reflect on memory"*, *"what has the memory learned"*, *"summarize what the troop has figured out"*, etc.). When fired, route to the Memory Reflection Procedure in `references/persistence.md`. Don't run a new troop until the user comes back with a goal.
 
 **Why this matters:** without a returning-user prompt, the skill silently treats invocation #2 the same as invocation #200 — both get an empty-handed "give me a goal" request. The memory only earns its keep if the skill volunteers it at the moments where it's relevant.
 
@@ -342,7 +350,7 @@ Full detail — promotion procedure, match algorithm, cross-project registry, mi
 
 ## Subagent Execution
 
-Monkeys work alone. That is the entire point of the room being full. Each monkey gets the same goal, a different personality, different finger paint, and none of them see what the others are making. Independence is what produces genuinely different paintings; without it, the troop quietly converges on whatever the model produces most fluently and the run becomes louder brainstorming, not exploration.
+Monkeys work alone. That is the entire point of running a full troop. Each monkey gets the same goal, a different personality, different finger paint, and none of them see what the others are making. Independence is what produces genuinely different paintings; without it, the troop quietly converges on whatever the model produces most fluently and the run becomes louder brainstorming, not exploration.
 
 Use real independent workers (Task subagents, agent spawns, whatever the host runtime calls them) whenever available. Single-context simulation collapses the independence and weakens every claim downstream — use it only as a documented degraded execution mode.
 
@@ -550,7 +558,7 @@ For Sketch mode, a shorter version: *"Four monkeys: Monkey 01 / [name] (tag), Mo
 > *"Eight monkeys have been finger-painting a while. Will brilliance emerge?"*
 > *"Sixteen monkeys done painting. Panel walking in to judge."*
 > *"Half the troop has set their brushes down. The other half is still making a mess."*
-> *"The room smells like paint. Final monkeys finishing up."*
+> *"Paint's everywhere. Final monkeys finishing up."*
 
 Mix registers — anticipation, procedural, atmospheric. Pick the line that fits this run's progress; don't keep one tone across every run. Don't narrate every step; one line per major phase is enough. Don't claim activity that hasn't happened (no "the Curator made a face" before the panel has run).
 
@@ -634,7 +642,7 @@ Persistence depends on run mode. Skipping required persistence silently breaks t
 persistence_by_mode:
   sketch:
     required: false
-    default: compact run note only when memory exists and the request is not clearly disposable
+    default: single-paragraph run note only when memory exists and the request is not clearly disposable
     indexes: optional
   standard:
     required: true
@@ -680,7 +688,7 @@ For Standard Mode or deeper, the run is not complete until all applicable writes
 
 **Where to write.** Top-level `outputs/` is for user-facing artifacts only — `final_response.md` (or equivalent). Everything else lives under `monkey-memory/`. No `EXECUTION_SUMMARY.md`, no freelance status reports, no ad-hoc metadata at the top level. Per-monkey scratchpads (when simulation requires them) go to `monkey-memory/runs/run_<slug>_raw/`, governed by the Raw Attempts policy in references/persistence.md.
 
-If persistence is not available, include a compact run record in the response and note that index updates were skipped.
+If persistence is not available, include a single-paragraph run record in the response and note that index updates were skipped.
 
 ## Formulation Generation
 
@@ -837,7 +845,7 @@ Read it whenever a discipline check fires.
 
 ## Cost and Effort Controls
 
-Every monkey costs tokens and time. A room with eight monkeys costs less than a room with twenty-four; a sketch costs less than a gallery. Pick the room that fits the work, and don't quietly invoice the user for paint they didn't ask for.
+Every monkey costs tokens and time. A troop of eight monkeys costs less than a troop of twenty-four; a sketch costs less than a gallery. Pick the troop size that fits the work, and don't quietly invoice the user for paint they didn't ask for.
 
 Guidelines:
 
@@ -964,7 +972,7 @@ The user can ask the skill to read its own memory and tell them what it has lear
 *"Which formulations are consistently winning?"*
 *"Which failure patterns keep showing up?"*
 *"Reflect on the memory."*
-*"What has the room learned?"*
+*"What has the memory learned?"*
 
 When the user asks anything that requires the skill to look backward across runs, route to memory reflection rather than starting a new run.
 
@@ -979,13 +987,13 @@ When the user asks anything that requires the skill to look backward across runs
 
 **Stop reading once the user's question is answered.** A scoped question (specific goal type) typically needs only steps 1–4. A broad *"what has the memory learned"* typically needs 1–5. Drilling into individual run files (step 6) is rare — most reflections work from indexes alone.
 
-Synthesize a memory report — what the room currently believes, with cautious language and citations to specific run IDs.
+Synthesize a memory report — what the memory currently believes, with cautious language and citations to specific run IDs.
 
 Detail on the synthesis format and citation discipline lives in `references/persistence.md` under "Memory Reflection Procedure".
 
 ### Tone
 
-Reflection prose is the same voice as user-facing run output — confident, slightly playful, willing to call out uncertainty. The memory is allowed to be honest about what it doesn't know yet. *"Twelve runs in, the room is convinced you reach for blunt voices. Less convinced about length preferences — the evidence splits. No data yet on long-form prose."*
+Reflection prose is the same voice as user-facing run output — confident, slightly playful, willing to call out uncertainty. The memory is allowed to be honest about what it doesn't know yet. *"Twelve runs in, the memory is convinced you reach for blunt voices. Less convinced about length preferences — the evidence splits. No data yet on long-form prose."*
 
 Do not invent confidence. If a pattern only shows up in 2 runs, say so.
 

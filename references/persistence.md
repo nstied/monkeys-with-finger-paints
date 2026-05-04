@@ -47,7 +47,7 @@ Shared memory layout (only when the user opts in, per project):
 
 `<user-working-directory>` is whatever folder the skill was invoked from — the project the user is working in. The skill never writes memory inside its own install path.
 
-If the environment cannot write files, produce a compact run record in the response so the user can save it.
+If the environment cannot write files, produce a single-paragraph run record in the response so the user can save it.
 
 ### Memory Location and First-Run Setup
 
@@ -170,7 +170,7 @@ shared_preferences_constraints:
 persistence_by_mode:
   sketch:
     required: false
-    default: compact run note only when memory exists and the request is not clearly disposable
+    default: single-paragraph run note only when memory exists and the request is not clearly disposable
     indexes: optional
   standard:
     required: true
@@ -186,7 +186,7 @@ persistence_by_mode:
     default: run file + evidence/uncertainty notes + core indexes
 ```
 
-Sketch Mode is allowed to be ephemeral. If a Sketch run produces a valuable highlight, user preference, or reusable failure, write a compact run note and update only the relevant indexes. Standard Mode and deeper should always persist when file access exists.
+Sketch Mode is allowed to be ephemeral. If a Sketch run produces a valuable highlight, user preference, or reusable failure, write a single-paragraph run note and update only the relevant indexes. Standard Mode and deeper should always persist when file access exists.
 
 ### Execution and Formulation Schema Metadata
 
@@ -724,7 +724,7 @@ member_runs:
   - run_curious_mandrill
   - run_jolly_tamarin
   - run_swift_macaque
-produced_under_skill_version: 0.5.2
+produced_under_skill_version: 0.5.8
 ---
 
 # Loop loop_<adjective>_<primate>: [Short Goal]
@@ -753,7 +753,7 @@ What changed in memory across this session. Format:
 
 Was convergence detected? If yes, on which loop did the memory stop learning?
 
-If no, how much further might the room go before saturating? (Best-effort guess from the Memory Keeper, not a promise.)
+If no, how much further might the troop go before saturating? (Best-effort guess from the Memory Keeper, not a promise.)
 
 ## Rebranch Suggestions for Next Session
 
@@ -1096,15 +1096,38 @@ A useful mental model: consolidated summaries are the table of contents. Run fil
 
 > *Reflection ≠ Consolidation.* Reflection is a read — the skill walks memory and reports back to the user. Consolidation (see above) is a write — it rolls older runs into summaries to keep the active retrieval set lean. Different operations, different triggers. Reflection runs when the user asks; Consolidation runs when the corpus crosses size thresholds.
 
-Reflection is reading the memory, not writing to it. The user asks something like *"what has the room learned about my taste?"* or *"summarize the whiskey-naming runs"*. The skill walks the memory and synthesizes a report. No monkeys, no panel, no new run file.
+Reflection is reading the memory, not writing to it. The user asks something like *"what has the memory learned about my taste?"* or *"summarize the whiskey-naming runs"*. The skill walks the memory and synthesizes a report. No monkeys, no panel, no new run file.
+
+### Critical: Forbidden Notation in Reflection Output
+
+**Read this rule before reading any source files.** The indexes and run files this procedure pulls from use compact internal notation — `n=5`, `status: strong`, `confidence: low`, `cross_project_observation_count: 1`, `Promotion: promoted`. **None of these tokens appear in reflection output to the user.** They are storage format, not communication format.
+
+**Forbidden patterns in user-facing reflection prose:**
+
+| Forbidden | Translate to |
+|---|---|
+| `n=5` | "seen in 5 runs" / "across 5 runs" / "5 times" |
+| `status: strong` | "strong" / "well-established" |
+| `status: supported` | "supported" / "looks promising" / "showing up consistently" |
+| `status: hypothesis` | "tentative" / "early signal" / "low-confidence guess" |
+| `confidence: low` | "low confidence" / "needs more runs to confirm" |
+| `confidence: medium` | "moderately confident" |
+| `confidence: high` | "high confidence" / "the memory is convinced" |
+| `cross_project_observation_count: 1` | "seen in one other project" / "observed once across projects" |
+| `Promotion: promoted` | drop entirely; users don't care about promotion status. Fold into prose only if the promotion is the headline insight. |
+| `evidence_count: N` | "N observations" / "seen N times" |
+
+**Rule:** if you find yourself typing `=`, `:` followed by a stat-like value, or any of the literal field names from the index files, stop and translate. The agent reads the indexes to know what the memory contains; it does NOT mirror the indexes' notation back to the user.
+
+If the reflection draft contains any of these forbidden patterns when you're done, treat it as a failed run and rewrite the offending lines in prose before delivering.
 
 ### When the User Triggers Reflection
 
 Detect by phrase or intent:
 
-- *"what does the memory know..."*, *"what has the room learned..."*, *"reflect on memory"*, *"summarize the memory"*, *"memory check"*
+- *"what does the memory know..."*, *"what has the memory learned..."*, *"reflect on memory"*, *"summarize the memory"*, *"memory check"*
 - *"which formulations are winning"*, *"which failures keep showing up"*
-- *"what does the room know about my taste"*
+- *"what does the memory know about my taste"*
 
 If the user's request would require *running* monkeys (any new task, any new goal, any "give me ideas for X"), it is not a reflection — route to the High-Level Workflow instead.
 
@@ -1148,7 +1171,7 @@ One short paragraph. State the headline observation in plain language.
 
 ## Convergence and Saturation
 
-What domains has the room saturated on? Where is the room still learning?
+What domains has the troop saturated on? Where is the memory still learning?
 
 ## Gaps the Memory Has Not Filled Yet
 
@@ -1169,21 +1192,15 @@ The reflection report is for the user, not for the memory's internal accounting.
 
 **Right:**
 
-> **The decision-room pattern.** The script centers on a meeting where a named human made a survivable call, with a named advisor on the record arguing for it. Strong — seen in 5 runs across military, political, scientific, architectural, legal, labor, and commercial settings. (Technical name: `brushpaw_council_hinge`.)
+> **The council-meeting pattern.** The script centers on a meeting where a named human made a survivable call, with a named advisor on the record arguing for it. Strong — seen in 5 runs across military, political, scientific, architectural, legal, labor, and commercial settings. (Technical name: `brushpaw_council_hinge`.)
 
 The technical name is a memory-traceability tool, not a user-facing identifier. Same rule the spec already applies to failure patterns (where `ai_speak_giveaway` becomes *"tripped the AI-speak alarm"* in user-facing prose). Apply it consistently to formulation names, meta-failure names, lineage names, and any other technical identifier that surfaces during reflection.
 
 ### Drop `n=` Notation
 
-Statistical-style notation like *"n=5, status: strong"* is meaningful inside indexes and run files where automated retrieval is reading. It is **not** for user-facing reflection prose. The user shouldn't have to know what `n` stands for to understand the report.
+See the **Forbidden Notation in Reflection Output** callout at the top of this section for the full forbidden-pattern list and translations. The same rule applies: index notation (`n=`, `status:`, `confidence:`, etc.) is for storage and retrieval; reflection prose translates to plain language.
 
-**Wrong:** *"brushpaw_council_hinge — n=5, status: strong."*
-
-**Right:** *"Strong — seen in 5 runs."* / *"The room has tested this enough times to be confident: 5 runs, all positive."* / *"Strong, across 5 runs."*
-
-The numeric `n`, the `status: strong/supported/hypothesis` lifecycle field, the `cross_project_observation_count`, the `confidence: low/medium/high` field — all of these are real fields in the indexes and run files, used for retrieval logic. They stay in the data. They do not appear in reflection prose. Translate them.
-
-A useful test: **read the reflection aloud.** If it sounds like a human telling another human what the room knows, it's right. If it sounds like a database dump, translate further.
+A useful test: **read the reflection aloud.** If it sounds like a human telling another human what the memory has learned, it's right. If it sounds like a database dump, translate further.
 
 ### Citation Discipline
 
@@ -1191,13 +1208,13 @@ Every claim cites at least one specific run ID. *"Run_0007 and run_0014 both sho
 
 If a pattern shows in fewer than 3 runs, mark it explicitly as low-confidence. Cautious language is mandatory:
 
-- "Plausible" / "looks like" / "the room seems to" — for 2-3 run patterns.
-- "Consistently" / "across the memory" / "the room is convinced" — for 5+ run patterns.
+- "Plausible" / "looks like" / "the memory seems to" — for 2-3 run patterns.
+- "Consistently" / "across the memory" / "the memory is convinced" — for 5+ run patterns.
 - Never "always" / "definitely" / "the user wants" — those overstate.
 
 ### Tone
 
-Same voice as the user-facing run output: confident where evidence supports it, honest about uncertainty, slightly playful. The memory is allowed to be honest about what it doesn't know yet. *"Twelve runs in, the room is convinced you reach for blunt voices. Less convinced about length preferences — the evidence splits. No data yet on long-form prose."*
+Same voice as the user-facing run output: confident where evidence supports it, honest about uncertainty, slightly playful. The memory is allowed to be honest about what it doesn't know yet. *"Twelve runs in, the memory is convinced you reach for blunt voices. Less convinced about length preferences — the evidence splits. No data yet on long-form prose."*
 
 Do not invent confidence. Do not invent patterns. Reflection's value is *honesty about the record*; making things up to sound impressive defeats the entire point of keeping a memory.
 

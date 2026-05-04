@@ -8,7 +8,7 @@ Loop Mode runs multiple full runs back-to-back on the same goal without the user
 
 **Why it exists.** Looping is not about grinding out a slightly better single answer. It is about building up the memory corpus faster. A single run leaves a small footprint in memory; ten loops leave a meaningful one. The memory corpus is the product. The "best painting" from any one loop is a byproduct.
 
-This framing matters when reporting: at the end of a loop session, lead with what the room learned, not with which run had the highest banana score.
+This framing matters when reporting: at the end of a loop session, lead with what the memory learned, not with which run had the highest banana score.
 
 ## Invoking Loop Mode
 
@@ -35,7 +35,7 @@ Any session can be interrupted by the user; the rules below describe automatic s
 2. The `cost_cap` is hit.
 3. **Convergence detected** (defined below).
 
-**Convergence — what it means in this skill.** Convergence is not a goal here; it is a warning. The point of Monkeys with Finger Paints is to *avoid* converging on the most fluent average answer. When the room starts producing the same painting on repeat, the right move is rarely "stop and accept the average" — it is to throw more chaos or rebranch.
+**Convergence — what it means in this skill.** Convergence is not a goal here; it is a warning. The point of Monkeys with Finger Paints is to *avoid* converging on the most fluent average answer. When the troop starts producing the same painting on repeat, the right move is rarely "stop and accept the average" — it is to throw more chaos or rebranch.
 
 **Convergence fires when ALL FOUR conditions hold across THREE consecutive loops:**
 
@@ -46,7 +46,7 @@ Any session can be interrupted by the user; the rules below describe automatic s
 
 All-four-and-three-loops is intentionally conservative. False-positive saturation hurts more than running one extra loop.
 
-**What happens on convergence.** The orchestrator does not silently stop. It surfaces the saturation in plain language — *"🙈 The room's tired. Three loops in a row producing the same painting. Want to inject chaos, rebranch, or stop?"* — and offers three responses, with a per-mode default:
+**What happens on convergence.** The orchestrator does not silently stop. It surfaces the saturation in plain language — *"🙈 The troop's tired. Three loops in a row producing the same painting. Want to inject chaos, rebranch, or stop?"* — and offers three responses, with a per-mode default:
 
 - **(A) Stop** — accept the memory state and wrap the session.
 - **(B) Inject chaos** — bump `fresh_chaos_ratio` to 50%, force at least 2 monkeys to `risk_level: alien` or higher, and force a Chaos Guardian into the panel for the remaining loops.
@@ -58,12 +58,12 @@ Default action by mode:
 convergence_default_action:
   sketch: B   # inject chaos and finish the loop count
   standard: B
-  gallery: C  # rebranch — Gallery already has a Chaos Guardian; just changing the room
+  gallery: C  # rebranch — Gallery already has a Chaos Guardian; just changing the goal context
   deep_troop: C
   research: A # research wants stability, not more chaos
 ```
 
-The user can override the default at any time. The session log records which response was taken so the room learns what the user reaches for when it saturates.
+The user can override the default at any time. The session log records which response was taken so the memory learns what the user reaches for when the troop saturates.
 
 ## Loop Memory Writes
 
@@ -96,4 +96,4 @@ The loop file's body summarizes what changed across the session: which formulati
 
 During the session: a one-line stage-setting note before each loop, and a brief atmospheric line between loops. *"Loop 3 of 5. Bananas in the air."* No long synthesis between loops — that's what the loop wrapper is for.
 
-At session end: a corpus-first summary. *"Five loops. The room learned X, strengthened Y, surfaced new failure pattern Z. Best single painting was from loop 3. Here are the rebranch suggestions for next time."* The wrapper file path goes in the response so the user can browse the full session record.
+At session end: a corpus-first summary. *"Five loops. The memory learned X, strengthened Y, surfaced new failure pattern Z. Best single painting was from loop 3. Here are the rebranch suggestions for next time."* The wrapper file path goes in the response so the user can browse the full session record.

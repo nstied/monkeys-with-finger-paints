@@ -43,7 +43,7 @@ Each monkey's prompt contains:
 
 - The user's original goal (full text).
 - Shared constraints.
-- The monkey's parameter card (compact YAML).
+- The monkey's parameter card (single-block YAML).
 - Output requirements: core answer, best highlight, what makes this approach different, main risk, candidate formulation worth preserving.
 
 ## How Judges Work

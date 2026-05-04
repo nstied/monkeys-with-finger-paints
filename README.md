@@ -45,7 +45,7 @@ Beyond a single run, the skill supports:
 
 - **Loop Mode** — multiple back-to-back runs on the same goal that compound the memory corpus.
 - **Memory Reflection** — ask the skill to read its own memory and report what it's learned about your taste, without running new monkeys.
-- **User Judge Mode** — say *"I'll judge"* and the panel still scores but you pick the winners, with explicit criteria and the room's full output surfaced.
+- **User Judge Mode** — say *"I'll judge"* and the panel still scores but you pick the winners, with explicit criteria and the troop's full output surfaced.
 - **Sketch / Gallery / Deep Troop** — scale from 4 monkeys (fast) to 48 (deep) by saying the mode name.
 
 ## WHEN BANANAS ARE EARNED
