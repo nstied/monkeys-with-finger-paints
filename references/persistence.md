@@ -724,7 +724,7 @@ member_runs:
   - run_curious_mandrill
   - run_jolly_tamarin
   - run_swift_macaque
-produced_under_skill_version: 0.4.4
+produced_under_skill_version: 0.4.5
 ---
 
 # Loop loop_<adjective>_<primate>: [Short Goal]

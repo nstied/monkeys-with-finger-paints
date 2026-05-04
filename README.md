@@ -1,17 +1,18 @@
 <img width="1920" height="819" alt="monkeys-with-fingerpaint-banner" src="https://github.com/user-attachments/assets/52b2852c-ea55-44bb-8fb1-67f5aa1d5254" />
 
-
 ## Monkeys with Finger Paints
 
-Sometimes random monkeys do great things. 
+Sometimes random monkeys do great things.
 
-This skill uses random monkeys to fight AI blandness with directed chaos. Give it a goal and it spawns a bunch of monkeys (subagents) with varying personalities. Each monkey independently works towards the goal. When all the monkeys are done, an adversarial panel judges their outputs, desginates highlights and components worth keeping, and preserves the cause-effect chain in a Markdown memory that biases future runs.
+This skill uses random monkeys to fight AI blandness with directed chaos. Give it a goal and it spawns a bunch of monkeys (subagents) with varying personalities. Each monkey independently works toward the goal. When all the monkeys are done, an adversarial panel judges their outputs, designates highlights and components worth keeping, and preserves the cause-effect chain in a Markdown memory that biases future runs.
 
-Beware. The monkey troop gets smarter and smarter over time. Eventually, it might just become smarter than you. 
+Beware. The monkey troop gets smarter and smarter over time. Eventually, it might just become smarter than you.
+
+The brainstorm is the medium. The memory corpus is the product.
 
 ## Where to Start
 
-- **`PITCH.md`** — why this skill exists. The monkey manifesto. 
+- **`PITCH.md`** — why this skill exists. The monkey manifesto.
 - **`SKILL.md`** — operating spec. Read if you're invoking the skill or want to understand what it actually does.
 - **`monkey-memory/README.md`** — orientation for anyone walking into the memory a skill produces, without having read the spec.
 
@@ -20,7 +21,8 @@ Beware. The monkey troop gets smarter and smarter over time. Eventually, it migh
 ```
 SKILL.md           — runtime procedure and principles
 PITCH.md           — why-this-exists pitch
-LICENSE            — MIT
+LICENSE            — Apache 2.0
+NOTICE             — attribution requirement (preserve in derivatives)
 references/        — deep-dive content the skill loads on demand
   formulations.md  — dimensions, seed library, voice anchors, fresh chaos
   panel.md         — judges, judging procedure, prompt templates
@@ -30,14 +32,14 @@ references/        — deep-dive content the skill loads on demand
   loop-mode.md     — loop invocation, cost gating, convergence detection and response, wrapper file
   quality.md       — lifecycle, entropy, causality, verification, beauty, chaos, lineage, failures
 templates/         — file templates the skill uses (run, formulation, lineage, panel decision)
-monkey-memory/            — persistent memory (populated by runs)
+monkey-memory/     — persistent memory (populated by runs, gitignored)
 ```
 
 ## Use For
 
-This skill enhances AI instances by encouraging broad, diverse thinking. It eliminates bland, boring, averaged-to-the-mean reasoning that often plagues AI systems. It remembers what "good" is. It handles chagning topics within a single chat/instance/repo and develops a sense of taste over time.
+This skill enhances AI instances by encouraging broad, diverse thinking. It eliminates bland, boring, averaged-to-the-mean reasoning that often plagues AI systems. It remembers what "good" is. It handles changing topics within a single chat / instance / repo and develops a sense of taste over time.
 
-It enables creative ideation with multiple defensible answers such as naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings, and similar work where novelty and beauty matter as much as correctness.
+Strong fit for creative ideation with multiple defensible answers — naming, positioning, framing, voice, copy, refactor strategies, API design, postmortem framings, and similar work where novelty and beauty matter as much as correctness.
 
 Beyond a single run, the skill supports:
 
@@ -48,11 +50,11 @@ Beyond a single run, the skill supports:
 
 ## Best For
 
-Tasks with multiple defensible answers and where taste matters. The skill won't refuse simpler questions, but the memory and panel might be overkill on simple tasks.
+Tasks with multiple defensible answers where taste matters. The skill won't refuse simpler questions, but the memory and panel might be overkill on a single-answer lookup.
 
 ## License
 
-Apache 2.0. See `LICENSE`.
+Apache 2.0. See `LICENSE` for the full text and `NOTICE` for the attribution requirement on derivatives.
 
 ## Author
 

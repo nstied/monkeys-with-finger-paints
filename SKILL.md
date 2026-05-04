@@ -1,10 +1,10 @@
 ---
 name: monkeys-with-finger-paints
 description: A chaos-preserving evolutionary ideation skill. Puts many independent monkeys on the same goal, each with a different personality-and-finger-paint parameter card, has an adversarial panel pick a portfolio of winners, and preserves results in a Markdown memory that biases future runs. Scales from Sketch (4 monkeys) to Deep Troop (48). Supports Loop Mode (multiple back-to-back runs that compound the memory corpus) and Memory Reflection (the skill reads its own memory corpus and reports what it has learned). Use for ideation, naming, positioning, framing, copywriting, voice, strategy, or radical creative exploration where novelty and beauty matter as much as correctness. Trigger on "monkeys with finger paint", "throw a troop at this", "sketch monkeys", "gallery mode", "deep troop", "loop the monkeys", "go wild on this", "max chaos", "radical ideation", "reflect on memory", "memory check", or "monkeys help". Full invocation catalog in SKILL.md.
-license: MIT
+license: Apache-2.0
 metadata:
   author: Nicholas Tiedemann
-  version: 0.4.4
+  version: 0.4.5
 ---
 
 # Monkeys with Finger Paints

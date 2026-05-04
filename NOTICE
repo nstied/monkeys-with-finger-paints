@@ -1,0 +1,18 @@
+Monkeys with Finger Paints
+Copyright 2026 Nicholas Tiedemann
+
+Licensed under the Apache License, Version 2.0 (the "License").
+See the LICENSE file for the full text.
+
+ATTRIBUTION REQUIREMENT
+
+When you use, redistribute, fork, or build derivative works on top of
+this skill, you must preserve this NOTICE file and credit the original
+author. Suggested attribution language:
+
+  "Built on Monkeys with Finger Paints by Nicholas Tiedemann
+   (https://github.com/nstied/monkeys-with-finger-paints)"
+
+This applies to derivatives shipped as Claude skills, integrations into
+agent platforms, prompt libraries that incorporate the patterns, or any
+other reuse — commercial or otherwise.
