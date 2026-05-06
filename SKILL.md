@@ -4,7 +4,7 @@ description: A chaos-preserving evolutionary ideation skill. Puts many independe
 license: Apache-2.0
 metadata:
   author: Nicholas Tiedemann
-  version: 0.5.8
+  version: 0.7.2
 ---
 
 # Monkeys with Finger Paints
@@ -37,7 +37,7 @@ The core principle:
 
 ## Output Style
 
-This skill produces **full prose responses** for the user. Substantive output — synthesis, panel reporting, monkey output summaries, the portfolio, next moves — runs as full prose per the canonical run-output template defined in `references/response-style.md`.
+This skill produces **full prose responses** for the user. Substantive output — synthesis, the comparison of monkey outputs, the decision table, panel reporting, and next moves — runs as full prose per the canonical run-output template defined in `references/response-style.md`.
 
 **Do not auto-invoke compression or brevity skills** (caveman, ultra-compressed mode, token-saving skills) when running this spec. This skill's spec uses descriptive language about file formats, section sizes, and run notes. None of that language is a user request for compressed output. Default behavior is full prose.
 
@@ -602,6 +602,8 @@ Use the panel process described below.
 
 The user always has the right to interject in any run, at any point — nominate a different finalist, ask the panel to re-judge with a different criterion, mark a candidate as a false positive, change panel composition mid-stream, request a rebranch. This right is permanent and does not depend on what the orchestrator does at end-of-run. The only thing the orchestrator decides is whether to *pause* and explicitly invite override.
 
+Every run must still be easy to judge. Even in Clean close, the user-facing response includes the compact comparison table, the "Judge it fast" decision surface, the criteria list, and easy reply shapes from `references/response-style.md`. Clean close means "don't pause for a tiebreaker," not "hide the comparison surface."
+
 Default to **not asking** every run — repetitive override prompts are annoying. Pick the closing mode based on what the run produced:
 
 **Clean close (most runs).** Panel was decisive, no strong runner-up, no genuine disagreement. Deliver the synthesis. End with the "Next moves" footer (see Step 9). No override question. The user knows they can interject if they want.
@@ -630,7 +632,7 @@ Each time the user overrides the panel's call, increment `overrides_applied` and
 
 ### Step 9: Synthesize Final Output
 
-Produce a final answer from the portfolio and present it using the **canonical run-output template** defined in [`references/response-style.md`](references/response-style.md) → "Canonical Run-Output Template". The template skeleton is fixed: headline synthesis → what the monkeys made → what the panel said (with one of four verdict shapes) → the portfolio → next moves → memory updates. Voice and tone rules for filling each section, plus Sketch / Loop / Reflection variants, live in the same file.
+Produce a final answer from the portfolio and present it using the **canonical run-output template** defined in [`references/response-style.md`](references/response-style.md) → "Canonical Run-Output Template". The template skeleton is fixed: headline synthesis → what the monkeys made (comparison table) → Judge it fast (the single decision table for all picks and flags) → what the panel said (with one of four verdict shapes) → next moves → memory updates. The full portfolio still gets recorded in the run file by Step 10 — it's bookkeeping, not user-facing content. Voice and tone rules for filling each section, plus Sketch / Loop / Reflection variants, live in the same file.
 
 Read it now. Don't paste the winning monkey output unless that *is* the best synthesis — the synthesis is usually recombined from the portfolio, not copied.
 

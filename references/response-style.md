@@ -6,17 +6,44 @@ This file is loaded by the orchestrator on demand, primarily at synthesis time (
 
 ## Canonical Run-Output Template
 
-Every Standard, Gallery, and Deep Troop run produces user-facing output using this fixed skeleton. Voice plays inside each section (the panel can sound like the panel, monkeys keep their character names), but readers always know where to look for "what the monkeys made," "what the panel said," and "the portfolio."
+Every Standard, Gallery, and Deep Troop run produces user-facing output using this fixed skeleton. Voice plays inside each section (the panel can sound like the panel, monkeys keep their character names), but readers always know where to look for "what the monkeys made," "Judge it fast," and "what the panel said."
 
 ```markdown
 [1-2 line headline answer. The synthesis, plain. No preamble.]
 
 ## What the monkeys made
 
-- Monkey 01 / [Name] ([what made it distinct]): [one-line summary of the painting]
-- Monkey 02 / [Name] ([what made it distinct]): [one-line summary]
-- Monkey 03 / [Name] ([what made it distinct]): [one-line summary]
-- ... (every monkey in the troop, one line each)
+| Monkey | What it is | Distinct move | Best use | Main risk |
+|---|---|---|---|---|
+| Monkey 01 / [Display Name] | [one-line summary of the actual painting — substantive, not a topic tag] | [what made it distinct] | [best overall / beauty / usefulness / surprise / failure signal / none] | [why it may fail] |
+
+The **What it is** column must be a one-line summary of the *actual painting* — the output the monkey produced. Not a topic tag, not a label, not a category. The reader must be able to evaluate the candidate from this single row without reading the longer prose elsewhere. *"1924 LA plague quarantine, told through Macy Street flag-by-flag"* is a summary. *"1924 LA Macy Street plague quarantine"* is a tag and is not acceptable.
+
+## Judge it fast
+
+The single decision table for the run — the four picks the user can override and the three flags worth surfacing. Always included as a section. Individual rows are omitted when the run didn't produce them; the section header and table shell stay.
+
+| Pick | Monkey | What it is | Why it earns this pick | Caveat |
+|---|---|---|---|---|
+| Best Overall | Monkey NN / [Display Name] | [one-line summary of the actual painting] | [why it earned the top pick — multi-axis strength] | [main risk if you go with it] |
+| Most Beautiful | Monkey NN / [Display Name] | [one-line summary of the actual painting] | [why beauty scored highest here] | [where it falls short on goal-fit or usefulness] |
+| Most Useful | Monkey NN / [Display Name] | [one-line summary of the actual painting] | [why this is the most actionable] | [where it sacrifices novelty or beauty] |
+| Most Surprising | Monkey NN / [Display Name] | [one-line summary of the actual painting] | [the unexpected angle it opens] | [why the surprise may not pan out] |
+| Best Highlight | Monkey NN / [Display Name] | ✨ "[exact quoted highlight]" | [why this phrase deserves preservation regardless of the surrounding painting] | [why you might still pass on it] |
+| Failure with Signal | Monkey NN / [Display Name] | [one-line summary of what failed] | [what the failure taught] | [why the lesson may not generalize] |
+| False Positive | Monkey NN / [Display Name] | [one-line summary of the surface-strong candidate] | [why it looked good at first read] | [why it cracked under critique] |
+
+*Always include the section. Omit individual rows the run didn't produce — don't fake them. Four real entries beats seven padded ones. The first four picks (Best Overall through Most Surprising) are picks the user is actively choosing among; the last three are flags worth surfacing for memory and learning.*
+
+**Self-containment is mandatory.** Judge it fast must let the reader make decisions and flag candidates from this table alone, without scrolling elsewhere for context. If a row only carries a tag/label and not what the monkey produced, rewrite it.
+
+**Canonical referencing.** The **Monkey** column is always the canonical identifier in the format `Monkey NN / [Display Name]`. The **What it is** column is the substantive one-line summary of the painting (or, for Best Highlight, the exact quoted phrase, prefixed with ✨). Never substitute a topic tag or candidate subject for either column — they are different things, and confusing them creates name soup the user cannot trace.
+
+**What you're judging against:** goal-fit, beauty, usefulness, and surprise.
+
+**Easy replies:** *"Best Overall = Monkey 03"; "I like Monkey 06's highlight but Monkey 01's direction"; "none landed, rerun with [constraint]"; "the panel got it wrong, Monkey 04 wins."* Easy replies must reference monkeys by ID (`Monkey NN`), never by candidate subject or topic tag.
+
+**The full portfolio still lives in the run file.** Step 10 records every category and every monkey. Judge it fast is the user-facing decision surface; the run file is the bookkeeping.
 
 ## What the panel said
 
@@ -30,20 +57,9 @@ Every Standard, Gallery, and Deep Troop run produces user-facing output using th
 - **Clean call.** Panel agreed, no real tension. *"Pickles for the founder-memo voice; the panel didn't argue."*
 - **Conditional.** Two paths depending on context. *"If you're going for the boardroom, Pickles. If it's a Twitter thread, Bananarama is sharper."*
 - **Top-with-runner-up.** One winner but the second-place is worth surfacing. *"Pickles wins on goal-fit, but Mojo's highlight is stronger if you can let the rest of the painting go."*
-- **Split.** Genuine disagreement that didn't resolve. *"Curator wanted Pickles; Operator wanted Bananarama. Both are in the portfolio for you to pick."*
+- **Split.** Genuine disagreement that didn't resolve. *"Curator wanted Pickles; Operator wanted Bananarama. Both are in Judge it fast for you to pick."*
 
 The verdict shape pairs with Step 8's Adaptive Closing Modes — clean close → clean verdict, split-panel close → split or conditional verdict, strong-runner-up close → top-with-runner-up verdict. Use the shape that matches what happened in the panel; don't manufacture clarity that wasn't there.
-
-## The portfolio
-
-- **Best overall:** Monkey NN / [Name] — [why]
-- **Most beautiful:** Monkey NN / [Name] — [why]
-- **Most useful:** Monkey NN / [Name] — [why]   *(if distinct from Best Overall)*
-- ✨ **Best highlight:** "[exact quoted highlight]" (from Monkey NN / [Name])
-- **Failure with signal:** Monkey NN / [Name] — [what the failure taught]
-- **False positive:** Monkey NN / [Name] — [why it cracked under critique]
-
-*Omit categories the run didn't produce. Don't fake them. Three or four real categories beats six padded ones.*
 
 ## Next moves
 
@@ -63,16 +79,17 @@ The verdict shape pairs with Step 8's Adaptive Closing Modes — clean close →
 - **Don't add sections that aren't in the template.** If you have something extra to say (lineage callback, surprise convergence note, user-preference observation), weave it into the appropriate existing section. Adding bespoke H2s breaks the skeleton.
 - **Don't paste the winning monkey output unless that *is* the best synthesis.** The synthesis is usually a recombined-from-the-portfolio answer, not a copy.
 - **Promotion to global indexes is bookkeeping, not a "next move."** Everything from the run is already preserved in the run file by Step 10. Don't invite the user to "preserve" anything — it's already preserved.
+- **Judgeability is mandatory.** The user should be able to pick a winner, runner-up, highlight, false positive, or rerun direction from the response alone. If the response requires scrolling through narrative panel commentary to compare candidates, rewrite it into the tables above.
 
 ### Variants for other modes
 
-**Sketch Mode** uses the same template but expects shorter content per section — usually a single sentence per monkey, two lines of panel voice, three or four portfolio entries.
+**Sketch Mode** uses the same template but expects shorter content per section — usually a single sentence per monkey, two lines of panel voice, and a Judge it fast table that may be only two or three rows.
 
-**Loop Mode** uses a per-loop variant: instead of one "What the monkeys made" section, the response surfaces a per-loop summary table (loop / best overall / best highlight / new formulation hypotheses) plus the memory-movement section from the loop wrapper file. Per-monkey detail at 8×N monkeys is too much; the wrapper file holds the canonical record.
+**Loop Mode** uses a per-loop variant: instead of one "What the monkeys made" section, the response surfaces a per-loop summary table (loop / best overall / best highlight / new formulation hypotheses) plus the memory-movement section from the loop wrapper file. Per-monkey detail at 8×N monkeys is too much; the wrapper file holds the canonical record. It also includes a "Judge it fast" table covering the final cross-loop portfolio.
 
 **Memory Reflection** uses the synthesis format described in `references/persistence.md` under "Memory Reflection Procedure" — *not* this template. Reflection is reading, not running.
 
-**User Judge Mode** (when the user says *"I'll judge"*, *"let me pick"*, *"I'm the final judge"*, etc.) uses a substantially different template. The panel still scores, but the orchestrator does NOT pick a Best Overall — the user does. Show the user enough to actually judge, with explicit criteria and clear response options. Skeleton:
+**User Judge Mode** (when the user says *"I'll judge"*, *"let me pick"*, *"I'm the final judge"*, etc.) uses a substantially different template. The panel still scores, but the orchestrator does NOT pick a Best Overall — the user does. The "Pick the winners" section in this template **replaces Judge it fast** for User Judge runs; do not include both. Show the user enough to actually judge, with explicit criteria and clear response options. Skeleton:
 
 ```markdown
 [1-2 line note: the panel scored, your call now.]
@@ -94,28 +111,23 @@ Panel scores: 🍌🍌🍌 Curator | 🍌🍌🍌🍌 Operator | 🍌🍌 Skepti
 
 ## Pick the winners
 
-The panel didn't pick a Best Overall — that's your call. Choose any subset of these categories:
+The panel didn't pick a Best Overall — that's your call. This section is the User Judge Mode equivalent of Judge it fast: a table of the seven picks with empty rightmost columns for you to fill in.
 
-- **Best Overall** — strongest complete answer
-- **Most Beautiful** — most resonance, compression, memorability
-- **Most Useful** — most actionable
-- **Most Surprising** — most unexpected useful direction
-- **Best Highlight** — phrase, image, or move worth keeping (even if the surrounding output is weak)
-- **Failure with Signal** — failed but taught something
-- **False Positive** — looked strong, doesn't hold up under scrutiny
-
-**What you're picking against:**
-
-- *Goal-fit* — does it answer what you actually asked?
-- *Beauty* — memorable, generative, resonant?
-- *Usefulness* — can you act on it?
-- *Surprise* — opens something unexpected?
+| Pick | Description | Criterion | Your call |
+|---|---|---|---|
+| Best Overall | strongest complete answer | goal-fit | _which monkey?_ |
+| Most Beautiful | most resonance, compression, memorability | beauty | _which monkey?_ |
+| Most Useful | most actionable | usefulness | _which monkey?_ |
+| Most Surprising | most unexpected useful direction | surprise | _which monkey?_ |
+| Best Highlight | phrase, image, or move worth keeping | regardless of surrounding output | _which monkey + which line?_ |
+| Failure with Signal | failed but taught something | learning | _which monkey?_ |
+| False Positive | looked strong, doesn't hold up under scrutiny | scrutiny | _which monkey?_ |
 
 **How to respond:**
 
 - Pick by category: *"Pickles for Best Overall, Bananarama for Most Beautiful, Mojo's drum-quote line for Best Highlight."*
 - Or override the panel: *"The panel got it wrong. Sprig is the winner — here's why."*
-- Or just narrate what you liked in plain English: *"I loved Pickles' voice and Mojo's last paragraph; the rest can go."* The orchestrator will translate into categories.
+- Or just narrate what you liked in plain English: *"I loved Pickles' voice and Mojo's last paragraph; the rest can go."* The orchestrator will translate into picks.
 - Or pick nothing and request a rerun: *"None of these landed. Throw 8 more with [different constraint]."*
 
 **Scoring (optional, not required):** if you want to score along with picking, use the panel's scale — **1 to 4 bananas, whole bananas only.** 🍌 = low / 🍌🍌 = medium / 🍌🍌🍌 = high / 🍌🍌🍌🍌 = exceptional. There is no half-banana, no zero-banana, and no fifth banana — that's the spec's hard constraint, the same one the judges use. Picking by category is enough on its own; scoring is a courtesy for the memory, not a requirement.
@@ -215,7 +227,7 @@ Loop Mode flanks at session start and session end with the per-loop mode's count
 >
 > *The Curator went hard for Rita — kept calling it "the only real painting." The Skeptic torched Bonzo. Operator was bored. Panel landed on Rita.*
 >
-> *[full canonical run-output template follows: What the monkeys made, What the panel said, The portfolio, Next moves, Memory updates]*
+> *[full canonical run-output template follows: What the monkeys made, Judge it fast, What the panel said, Next moves, Memory updates]*
 >
 > *🐵🐵🐵🐵🐵🐵🐵🐵 SHOW'S OVER 🐵🐵🐵🐵🐵🐵🐵🐵*
 
@@ -300,7 +312,7 @@ The callback's job is to make the memory visible to the user — to demonstrate 
 
 ## Structure of user-facing responses
 
-User-facing responses use the canonical run-output template defined at the top of this file. Section order is fixed: headline synthesis → what the monkeys made → what the panel said → the portfolio → next moves → memory updates. The skeleton above carries the structure; voice carries the character.
+User-facing responses use the canonical run-output template defined at the top of this file. Section order is fixed: headline synthesis → what the monkeys made → Judge it fast → what the panel said → next moves → memory updates. The skeleton above carries the structure; voice carries the character.
 
 Do not overexplain the machinery unless asked. If the user asks for the full run record, provide it (the run file is more technical, which is fine — the user-facing layer is where the personality lives).
 
